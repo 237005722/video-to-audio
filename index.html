@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video To Audio</title>
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+  <button>
+    <label for="file" id="filename">选择视频文件</label>
+    <input type="file" name="file" id="file" accept="video/*,audio/*" onchange="fileChange(this)">
+  </button>
+  <script src="index.js"></script>
+  <script>
+    const fileChange = (input) => {
+      const file = input.files[0]
+      const label = document.getElementById('filename')
+      label.innerHTML = file.name
+
+      videoToAudio(file).then(audio => {
+        console.log('audio', audio)
+        audio && (label.innerHTML = audio.fileName)
+      })
+    }
+  </script>
+</body>
+</html>
