@@ -15,6 +15,7 @@
   <script>
     const fileChange = (input) => {
       const file = input.files[0]
+      if(!file) return
       const label = document.getElementById('filename')
       label.innerHTML = file.name
 
